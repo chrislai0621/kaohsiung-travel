@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta property="og:title" content="高雄旅遊資訊">
+    <meta property="og:description" content="高雄不同新玩法，快點來高雄旅遊吧">
+    <meta property="og:locale" content="zh_TW">
+    <meta property="og:site_name" content="高雄旅遊資訊">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@kaohsiung-travel" />
+    <meta name="twitter:creator" content="@kaohsiung-travel" />
+    <meta property="og:url" content="#" />
+    <meta property="og:title" content="高雄旅遊資訊" />
+    <meta property="og:description" content="高雄不同新玩法，快點來高雄旅遊吧" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="stylesheets/all.css">
+
+    <title>高雄旅遊資訊</title>
+</head>
+
+<body>
+    <header>
+        <div class="bg-cover py-12 d-flex flex-column justify-content-center align-items-center"
+            style="background-image: url(images/Hero.png); height: 380px;">
+            <h1 class="text-white mb-12">高雄旅遊資訊</h1>
+            <select class="form-control mt-1 w-50 mb-4" id="zoneId">
+
+            </select>
+        </div>
+        <div class="row justify-content-center bg-cream-white pb-7">
+            <div class="col-md-8 py-4 px-5 header-zone">
+                <div class="h5">熱門行政區</div>
+                <button type="button" class="btn btn-purple text-white mt-1 ml-4 btnZone" data-zone='苓雅區'>苓雅區</button>
+                <button type="button" class="btn btn-pink text-white mt-1 ml-4 btnZone" data-zone='三民區'>三民區</button>
+                <button type="button" class="btn btn-warning text-white mt-1 ml-4 btnZone" data-zone='新興區'>新興區</button>
+                <button type="button" class="btn btn-info text-white mt-1 ml-4 btnZone" data-zone='旗津區'>旗津區</button>
+
+            </div>
+        </div>
+    </header>
+    <section class="bg-cream-white text-center pb-5">
+        <div class="container d-flex flex-column justify-content-center">
+            <div class="hr-info-dash"></div>
+            <div class="icon align-self-center bg-cream-white mb-10">
+                <img src="images/icons_down.png" class="icon-image">
+            </div>
+            <div class="h2 text-purple mb-5" id="zone-name"></div>
+        </div>
+        <div class="container">
+            <div class="row" id="travel-list">
+                <div class="col-md-6 mb-7">
+                    <div class="card">
+                        <img class="img-top" src="http://khh.travel/FileArtPic.ashx?id=705&w=1280&h=960">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div style="width:18px" class="text-center mr-2"><img src="images/icons_clock.png"></div>
+                                <span>週二至週五10:00-18:00，每週一公休</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <div style="width:18px" class="text-center mr-2"><img src="images/icons_pin.png"></div>
+                                <span>高雄市三民區建國二路318號</span>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <div style="width:18px" class="text-center mr-2"><img src="images/icons_phone.png"></div>
+                                <span>886-7-2363357</span>
+                                <img src="images/icons_tag.png" class="travel-tag">
+                                <span class="ml-auto w-25">免費參觀</span>
+                            </div>
+                            <div class="travel-title">高雄願景管</div>
+                            <div class="travel-zone">三民區</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center travel-pagination">
+               
+            </ul>
+        </nav>
+        <img src="images/btn_goTop.png" class="img-gotop">
+    </section>
+    
+    <footer class="bg-info text-center py-5">
+        <div class="font-14 text-white mb-3">高雄旅遊網</div>
+        <div class="font-14 text-light-yellow">資料來源：高雄市政府</div>
+    </footer>
+    <script src="javascripts/vendor.js"></script>
+    <script src="javascripts/all.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+.hr-info-dash
+{
+    border:1px dashed #559AC8;
+}
+.img-top
+{
+    height:155px;
+    min-width: 100%;
+}
+.travel-title
+{
+    position: absolute;
+    top:117px;
+    left:22px;
+    font-size: 24px;
+    color: white;
+}
+.travel-zone
+{
+    position: absolute;
+    top:125px;
+    right:20px;
+    color: white;
+}
+.travel-tag
+{
+    position: absolute;
+    right:98px;
+}
+.page-link:active {
+    z-index: 4;
+    color: $pagination-active-color;
+    text-decoration: none;
+    background-color: $pagination-active-bg;
+}
+.img-gotop
+{
+    position: fixed;
+    bottom:195px;
+    right:24px;
+}
