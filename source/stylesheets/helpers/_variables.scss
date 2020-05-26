@@ -826,9 +826,9 @@ $pagination-active-color:           theme-color('info') !default;//$component-ac
 $pagination-active-bg:              transparent !default;//$component-active-bg !default;
 $pagination-active-border-color:    transparent !default;//$pagination-active-bg !default;
 
-$pagination-disabled-color:         $gray-600 !default;
-$pagination-disabled-bg:            $white !default;
-$pagination-disabled-border-color:  $gray-300 !default;
+$pagination-disabled-color:         rgba(74,74,74,0.50) !default;
+$pagination-disabled-bg:            transparent !default; //$white !default;
+$pagination-disabled-border-color:  transparent !default;// $gray-300 !default;
 
 
 // Jumbotron

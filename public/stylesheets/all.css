@@ -4073,11 +4073,11 @@ input[type="button"].btn-block {
   border-color: transparent; }
 
 .page-item.disabled .page-link {
-  color: #6c757d;
+  color: rgba(74, 74, 74, 0.5);
   pointer-events: none;
   cursor: auto;
-  background-color: #fff;
-  border-color: #dee2e6; }
+  background-color: transparent;
+  border-color: transparent; }
 
 .pagination-lg .page-link {
   padding: 0.75rem 1.5rem;
@@ -9759,7 +9759,7 @@ body {
   position: absolute;
   right: 98px; }
 
-.page-link:active {
+.travel-page:active, .travel-page:hover, .travel-page.active {
   z-index: 4;
   color: #559AC8;
   text-decoration: none;

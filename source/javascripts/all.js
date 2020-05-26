@@ -3,9 +3,11 @@ var zones = [];//給下拉選單的資料
 var select = document.getElementById('zoneId');//行政區的下拉選單
 var btnZones = document.querySelectorAll('.btnZone'); //熱門行政區按扭imgGoTop
 var imgGoTop = document.querySelector('.img-gotop'); //go top img
+var travelPages = document.querySelectorAll('.travel-page');//頁碼
 var zoneObj = []; //選取的行政區資料
 var currentPageIndex =0;//目前頁數
 var zoneName='';//已選擇的行政區名
+
 //init
 getData();
 
@@ -47,17 +49,23 @@ function initPagination() {
     let pageCount = Math.ceil(parseInt(zoneObj.TotalCount) / 8);
     let elPagination = document.querySelector('.travel-pagination');
     let htmlStr = '';
-    htmlStr += '<li class="page-item"><a class="page-link travel-page" href="#" data-page="-1">< Prev</a></li>';
-    for (let i = 0; i < pageCount; i++) {
-        htmlStr += '<li class="page-item"><a class="page-link travel-page" href="#" data-page="' + i + '">' + (i + 1) + '</a></li>';
-    }
-    htmlStr += '<li class="page-item"><a class="page-link travel-page" href="#" data-page="+1">Next ></a></li>';
-    elPagination.innerHTML = htmlStr;
-    var btnPages = document.querySelectorAll('.travel-page');
-    for (let i = 0; i < btnPages.length; i++) {
-        btnPages[i].addEventListener('click', updatePageData);
-    }
-
+    elPagination.innerHTML ='';
+    if(pageCount >1) //頁碼超過1頁才顯示page
+    {
+        htmlStr += '<li class="page-item"><a class="page-link travel-page" href="#" data-page="-1">< Prev</a></li>';
+        for (let i = 0; i < pageCount; i++) {
+            htmlStr += '<li class="page-item"><a class="page-link travel-page" href="#" data-page="' + i + '">' + (i + 1) + '</a></li>';
+        }
+        htmlStr += '<li class="page-item"><a class="page-link travel-page" href="#" data-page="+1">Next ></a></li>';
+        elPagination.innerHTML = htmlStr;
+        var btnPages = document.querySelectorAll('.travel-page');
+        for (let i = 0; i < btnPages.length; i++) {
+            btnPages[i].addEventListener('click', updatePageData);
+        }
+        setPageBtnStatus(0, 0);
+    }    
+    
+    
 }
 //拉高雄市政府api資料回來
 function getData() {
@@ -95,15 +103,15 @@ function getData() {
                     if (zone !== records[i].Zone) {
                         zoneDatas.Zone = zone;
                         zoneDatas.TotalCount = zoneDatas.Datas.length;
-                        console.log(zoneDatas);
+                        //console.log(zoneDatas);
                         data.push(zoneDatas);
                         zoneDatas = {};
                         zoneDatas.Zone = records[i].Zone;
                         zoneDatas.Datas = [];
                         zoneDatas.TotalCount = 0;
                         zones.push({
-                            text: records[i].Zone,
-                            value: records[i].Zone
+                            text: zone,
+                            value: zone
                         });
                     }
                     zoneDatas.Datas.push(record);
@@ -111,11 +119,15 @@ function getData() {
                     zone = records[i].Zone;
                 }
                 zoneDatas.TotalCount = zoneDatas.Datas.length;
-                console.log(zoneDatas);
+                //console.log(zoneDatas);
                 data.push(zoneDatas);
                 data.TotalCount = records.length;
-                console.log(data);
-                console.log(zones);
+                //console.log(data);
+                zones.push({
+                    text: zone,
+                    value: zone
+                });
+                //console.log(zones);
                 initSelect();
                 zoneName = select.value;
                 updateView(zoneName, 0);
@@ -154,11 +166,18 @@ function updateView(zoneName, page) {
     let elZoneName = document.getElementById('zone-name');
     let htmlStr = '';
     let showItemNum = 8;
+    zoneObj=[];
+    travelList.innerHTML = '';
+    elZoneName.innerHTML = zoneName;
     for (let j = 0; j < data.length; j++) {
         if (zoneName === data[j].Zone) {
             zoneObj = data[j];
             break;
         }
+    }
+    if (zoneObj.length == 0)
+    {
+        return;
     }
     let zoneObjLength = zoneObj.TotalCount;
     let startIndex = page * showItemNum ;
@@ -167,7 +186,7 @@ function updateView(zoneName, page) {
     if (endIndex > zoneObjLength)
     {
         endIndex = zoneObjLength;
-    }
+    }    
     for (let i = startIndex; i < endIndex; i++) {
         htmlStr += '<div class="col-md-6 mb-7">';
         htmlStr +=    '<div class="card h-100">';
@@ -192,27 +211,69 @@ function updateView(zoneName, page) {
         htmlStr +=      '</div>';//card-body
         htmlStr +=    '</div>';//card
         htmlStr += '</div>';
-
-
     }
-    travelList.innerHTML = htmlStr;
-    elZoneName.innerHTML = zoneName;
+    travelList.innerHTML = htmlStr;    
 }
 //選取頁碼時，更新頁面資料
 function updatePageData(e)
 {
-    e.preventDefault();
-    let pageIndex = e.target.dataset.page;
-    switch (pageIndex) {
-        case '+1':
-            pageIndex = currentPageIndex + 1;
+     e.preventDefault();
+    let newPageIndex = e.target.dataset.page;   
+    switch (newPageIndex) {       
+        case '+1':            
+            newPageIndex = currentPageIndex + 1;
             break;
         case '-1':
-            pageIndex = currentPageIndex - 1;
+            newPageIndex = currentPageIndex - 1;            
+            break; 
+    }
+    updateView(zoneName, parseInt(newPageIndex));
+    setPageBtnStatus(currentPageIndex, newPageIndex);
+    currentPageIndex = parseInt(newPageIndex);
+}
+function setPageBtnStatus(oldPageIndex,newPageIndex)
+{
+    newPageIndex = parseInt(newPageIndex);
+    oldPageIndex= parseInt(oldPageIndex);
+    travelPages = document.querySelectorAll('.travel-page');//頁碼
+    let elOldLink = travelPages[(oldPageIndex + 1)];
+    let elNewLink = travelPages[(newPageIndex + 1)];
+    let preItem = travelPages[0].parentNode;
+    let nextItem = travelPages[travelPages.length - 1].parentNode;
+    //點選的頁碼是第1頁的話，就disabled pre 按扭，反之最後一頁，disabled next按鈕
+    switch (newPageIndex) {
+        case 0:
+            setLinkStatus(preItem, 'disabled', true);
+            setLinkStatus(nextItem, 'disabled', false);
+            break;       
+        case (travelPages.length - 3):
+            setLinkStatus(nextItem, 'disabled', true);
+            setLinkStatus(preItem, 'disabled', false);
             break;
         default:
+            setLinkStatus(preItem, 'disabled', false);
+            setLinkStatus(nextItem, 'disabled', false);
             break;
     }
-    updateView(zoneName,parseInt(pageIndex));
-    currentPageIndex = parseInt(pageIndex);
+    if (newPageIndex < (travelPages.length-2))
+    {
+        setLinkStatus(elOldLink, 'active', false);
+        setLinkStatus(elNewLink, 'active', true);
+    }        
+    currentPageIndex = parseInt(newPageIndex);
+}
+    
+function setLinkStatus(el,className,isAdd) {
+    
+    if (isAdd) {
+        if (!el.classList.contains(className)) {
+            el.classList.add(className);
+        }       
+    }
+    else {
+        if (el.classList.contains(className)) {
+            el.classList.remove(className);
+        }        
+    }   
+   
 }

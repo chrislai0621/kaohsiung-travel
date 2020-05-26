@@ -27,7 +27,7 @@
     position: absolute;
     right:98px;
 }
-.page-link:active {
+.travel-page:active , .travel-page:hover ,.travel-page.active{
     z-index: 4;
     color: $pagination-active-color;
     text-decoration: none;
