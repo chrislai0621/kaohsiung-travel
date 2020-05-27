@@ -9705,27 +9705,6 @@ a.text-cream-white:hover, a.text-cream-white:focus {
 .font-14 {
   font-size: 14px; }
 
-.icon {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  text-align: center;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
-  border: 1px solid #559AC8;
-  margin-top: -12px;
-  z-index: 3; }
-
-.icon-image {
-  height: 10px;
-  width: 10px; }
-
 body {
   font-family: 'PingFangTC-Regula'; }
 
@@ -9735,8 +9714,42 @@ body {
   border-radius: 5px;
   margin-top: -20px; }
 
-.hr-info-dash {
-  border: 1px dashed #559AC8; }
+.content-dividing-line {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: justify;
+  justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  position: relative; }
+  .content-dividing-line .content-dividing-line-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    border: 1px solid #559AC8;
+    background-color: #F7F7F7;
+    z-index: 3; }
+  .content-dividing-line .icon-image {
+    height: 10px;
+    width: 10px; }
+  .content-dividing-line:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    right: 30px;
+    border-bottom: 2px dashed #559AC8; }
 
 .img-top {
   height: 155px;

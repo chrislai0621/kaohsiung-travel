@@ -1,7 +1,45 @@
-.hr-info-dash
+
+.content-dividing-line
 {
-    border:1px dashed #559AC8;
+    $circle-size: 24px;
+    $circle-color:#559AC8;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    -ms-flex-pack: justify;
+    justify-content: center;
+    align-items: center;
+    position: relative;    
+    .content-dividing-line-icon
+    {
+        width:$circle-size;
+        height: $circle-size;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border :1px solid $circle-color;
+        background-color: $cream-white;
+        z-index:3;
+    }
+    .icon-image
+    {
+        height: 10px; 
+        width:10px;
+    }
+    &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 30px;
+    right: 30px;
+    border-bottom:2px dashed $circle-color;
+    }
+    
 }
+
 .img-top
 {
     height:155px;
