@@ -188,29 +188,29 @@ function updateView(zoneName, page) {
         endIndex = zoneObjLength;
     }    
     for (let i = startIndex; i < endIndex; i++) {
-        htmlStr += '<div class="col-md-6 mb-7">';
-        htmlStr +=    '<div class="card h-100">';
-        htmlStr +=      '<img class="img-top" src="' + zoneArray[i].Picture1 + '">';
-        htmlStr +=      '<div class="card-body">';
-        htmlStr +=          '<div class="d-flex align-items-center mb-3">';
-        htmlStr +=              '<div style="width:18px" class="text-center mr-2"><img src="images/icons_clock.png"></div>';
-        htmlStr +=              '<span>' + zoneArray[i].Opentime + '</span>';
-        htmlStr +=          '</div>';
-        htmlStr +=          '<div class="d-flex align-items-center mb-3">';
-        htmlStr +=              '<div style="width:18px" class="text-center mr-2"><img src="images/icons_pin.png"></div>';
-        htmlStr +=              '<span>' + zoneArray[i].Add + '</span>';
-        htmlStr +=          '</div>';
-        htmlStr +=          '<div class="d-flex align-items-center">';
-        htmlStr +=              '<div style="width:18px" class="text-center mr-2"><img src="images/icons_phone.png"></div>';
-        htmlStr +=              '<span>' + zoneArray[i].Tel + '</span>';
-        htmlStr +=              '<img src="images/icons_tag.png" class="travel-tag">';
-        htmlStr +=              '<span class="ml-auto">' + zoneArray[i].Ticketinfo + '</span>';
-        htmlStr +=          '</div>';
-        htmlStr +=          '<div class="travel-title">' + zoneArray[i].Name + '</div>';
-        htmlStr +=          '<div class="travel-zone">' + zoneArray[i].Zone + '</div>';
-        htmlStr +=      '</div>';//card-body
-        htmlStr +=    '</div>';//card
-        htmlStr += '</div>';
+        htmlStr +=`<div class="col-md-6 mb-7">
+           <div class="card h-100">
+             <img class="img-top" src="${zoneArray[i].Picture1}">
+             <div class="card-body">
+                 <div class="d-flex align-items-center mb-3">
+                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_clock.png"></div>
+                     <span>${zoneArray[i].Opentime}</span>
+                 </div>
+                 <div class="d-flex align-items-center mb-3">
+                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_pin.png"></div>
+                     <span>${zoneArray[i].Add}</span>
+                 </div>
+                 <div class="d-flex align-items-center">
+                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_phone.png"></div>
+                     <span>${zoneArray[i].Tel}</span>
+                     <img src="images/icons_tag.png" class="travel-tag">
+                     <span class="ml-auto">${zoneArray[i].Ticketinfo}</span>
+                 </div>
+                 <div class="travel-title">${zoneArray[i].Name}</div>
+                 <div class="travel-zone">${zoneArray[i].Zone}</div>
+             </div>
+           </div>
+        </div>`;
     }
     travelList.innerHTML = htmlStr;    
 }
