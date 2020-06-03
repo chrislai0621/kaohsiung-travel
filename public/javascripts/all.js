@@ -1,7 +1,7 @@
 var data = []; //所有區的資料
 var zones = [];//給下拉選單的資料
 var select = document.getElementById('zoneId');//行政區的下拉選單
-var btnZones = document.querySelectorAll('.btnZone'); //熱門行政區按扭imgGoTop
+var elHeaderZone = document.querySelector('.header-zone');
 var imgGoTop = document.querySelector('.img-gotop'); //go top img
 var travelPages = document.querySelectorAll('.travel-page');//頁碼
 var zoneObj = []; //選取的行政區資料
@@ -18,16 +18,15 @@ select.addEventListener('change',function(){
     initPagination();
 })
 
-for (let i = 0 ; i < btnZones.length ;i++)
-{
-    btnZones[i].addEventListener('click',function(e)
+elHeaderZone.addEventListener('click', function (e) {
+    if(e.target.nodeName !=='BUTTON')
     {
-        zoneName= e.target.dataset.zone;
-        updateView(zoneName, 0);
-        initPagination();
-    })
-}
-
+        return;
+    }
+    zoneName = e.target.dataset.zone;
+    updateView(zoneName, 0);
+    initPagination();
+})
 imgGoTop.addEventListener('click',function()
 {
     window.document.body.scrollTop = 0;
