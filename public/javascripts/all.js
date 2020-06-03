@@ -44,7 +44,6 @@ function initSelect() {
     }
 }
 function initPagination() {
-    let zoneslength = zoneObj.TotalCount;
     let pageCount = Math.ceil(parseInt(zoneObj.TotalCount) / 8);
     let elPagination = document.querySelector('.travel-pagination');
     let htmlStr = '';
