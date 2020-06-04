@@ -72,7 +72,7 @@ function getData() {
     xhr.send(null); //ture非同步，不會等資料傳回來，就讓程式往下跑，等到回傳才會自動回傳
     //readystate = 4時才會觸發onload
     xhr.onload = function () {
-        if (xhr.status == 200) {
+        if (xhr.status === 200) {
             let xhrData = JSON.parse(xhr.responseText);
             if (xhrData.success) {
                 //將每一個區包成一個物件
@@ -173,7 +173,7 @@ function updateView(zoneName, page) {
             break;
         }
     }
-    if (zoneObj.length == 0)
+    if (zoneObj.length === 0)
     {
         return;
     }
@@ -190,16 +190,16 @@ function updateView(zoneName, page) {
            <div class="card h-100">
              <img class="img-top" src="${zoneArray[i].Picture1}">
              <div class="card-body">
-                 <div class="d-flex align-items-center mb-3">
-                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_clock.png"></div>
+                 <div class="d-flex mb-3">
+                     <div style="width:18px" class="text-center mr-2 align-self-start"><img src="images/icons_clock.png"></div>
                      <span>${zoneArray[i].Opentime}</span>
                  </div>
-                 <div class="d-flex align-items-center mb-3">
-                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_pin.png"></div>
+                 <div class="d-flex mb-3">
+                     <div style="width:18px" class="text-center mr-2 align-self-start"><img src="images/icons_pin.png"></div>
                      <span>${zoneArray[i].Add}</span>
                  </div>
-                 <div class="d-flex align-items-center">
-                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_phone.png"></div>
+                 <div class="d-flex">
+                     <div style="width:18px" class="text-center mr-2 align-self-start"><img src="images/icons_phone.png"></div>
                      <span>${zoneArray[i].Tel}</span>
                      <img src="images/icons_tag.png" class="travel-tag">
                      <span class="ml-auto">${zoneArray[i].Ticketinfo}</span>

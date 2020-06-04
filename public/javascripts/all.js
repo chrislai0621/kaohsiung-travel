@@ -190,16 +190,16 @@ function updateView(zoneName, page) {
            <div class="card h-100">
              <img class="img-top" src="${zoneArray[i].Picture1}">
              <div class="card-body">
-                 <div class="d-flex align-items-center mb-3">
-                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_clock.png"></div>
+                 <div class="d-flex mb-3">
+                     <div style="width:18px" class="text-center mr-2 align-self-start"><img src="images/icons_clock.png"></div>
                      <span>${zoneArray[i].Opentime}</span>
                  </div>
-                 <div class="d-flex align-items-center mb-3">
-                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_pin.png"></div>
+                 <div class="d-flex mb-3">
+                     <div style="width:18px" class="text-center mr-2 align-self-start"><img src="images/icons_pin.png"></div>
                      <span>${zoneArray[i].Add}</span>
                  </div>
-                 <div class="d-flex align-items-center">
-                     <div style="width:18px" class="text-center mr-2"><img src="images/icons_phone.png"></div>
+                 <div class="d-flex">
+                     <div style="width:18px" class="text-center mr-2 align-self-start"><img src="images/icons_phone.png"></div>
                      <span>${zoneArray[i].Tel}</span>
                      <img src="images/icons_tag.png" class="travel-tag">
                      <span class="ml-auto">${zoneArray[i].Ticketinfo}</span>
